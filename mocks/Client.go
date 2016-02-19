@@ -1,6 +1,8 @@
 package mocks
 
-import "github.com/fsouza/go-dockerclient"
+import (
+	"github.com/fsouza/go-dockerclient"
+)
 
 type FakeClient struct {
 }
@@ -70,5 +72,9 @@ func (c *FakeClient) ListNetworks() ([]docker.Network, error) {
 }
 
 func (c *FakeClient) CreateNetwork(opts docker.CreateNetworkOptions) (*docker.Network, error) {
+	panic("Not Implemented Yet")
+}
+
+func (c *FakeClient) PushImage(opts docker.PushImageOptions, auth docker.AuthConfiguration) error {
 	panic("Not Implemented Yet")
 }

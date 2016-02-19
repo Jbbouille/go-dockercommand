@@ -17,6 +17,7 @@ type Client interface {
 	Logs(opts docker.LogsOptions) error
 	ListNetworks() ([]docker.Network, error)
 	CreateNetwork(docker.CreateNetworkOptions) (*docker.Network, error)
+	PushImage(opts docker.PushImageOptions, auth docker.AuthConfiguration) error
 }
 
 type FsouzaClient struct {
@@ -77,4 +78,8 @@ func (c *FsouzaClient) ListNetworks() ([]docker.Network, error) {
 
 func (c *FsouzaClient) CreateNetwork(opts docker.CreateNetworkOptions) (*docker.Network, error) {
 	return c.client.CreateNetwork(opts)
+}
+
+func (c *FsouzaClient) PushImage(opts docker.PushImageOptions, auth docker.AuthConfiguration) error {
+	return c.client.PushImage(opts, auth)
 }
